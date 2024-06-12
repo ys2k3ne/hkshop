@@ -1,0 +1,56 @@
+﻿
+@model IEnumerable<WebsiteBanHang.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+<p>
+    <a asp-action="Add">Create New</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@item.Id">Cập nhật</a> |
+                    <a asp-action="Display" asp-route-id="@item.Id">Hiển thị</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    body {
+        background-color: lavender;
+    }
+
+    .form-control {
+        border-color: #ccc;
+    }
+
+        .form-control:focus {
+            border-color: #5a5a5a;
+            box-shadow: none;
+        }
+
+    .btn-block {
+        margin-bottom: 1rem;
+    }
+</style>

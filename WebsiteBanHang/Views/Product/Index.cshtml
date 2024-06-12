@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebsiteBanHang.Models.Product>
+<link href="~/css/style.css" rel="stylesheet" />
+
+<div class="container">
+    <h1 class="text-center mb-4">Products</h1>
+    <p class="text-center mb-4">
+        <a asp-action="Add" class="btn btn-primary">Thêm mới</a>
+    </p>
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="@product.ImageUrl" alt="@product.Name" class="card-img-nh">
+                    <div class="card-body">
+                        <h5 class="card-header">@product.Name</h5>
+                        <p class="card-text">Giá: <span>&#x20B9;</span> <span class="product-price">@product.Price</span></p>
+                        <p class="card-text">Mô tả: @product.Description</p>
+                        <br />
+                    </div>
+                    <div class="btn-group">
+                        <a asp-action="Update" asp-route-id="@product.Id" class="btn btn-primary btn-link">Cập nhật</a>
+                        <a asp-action="Display" asp-route-id="@product.Id" class="btn btn-primary btn-link">Hiển thị</a>
+                        <a asp-action="Delete" asp-route-id="@product.Id" class="btn btn-primary btn-link">Xóa</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

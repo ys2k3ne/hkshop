@@ -1,0 +1,77 @@
+﻿<style> 
+body
+
+{
+    background-color: lavender;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    overflow: hidden; /* Add this line to prevent cutting of the image */
+    display: grid; /* Add this line to use flexbox */
+    flex-direction: column; /* Add this line to stack the content vertically */
+    background-color: pink;
+    align-items: center;
+}
+
+    .card img {
+        width: 100%;
+        height: auto;
+    }
+
+    .card a {
+        margin-right: 0.5rem;
+        padding: 0.5rem 1rem; /* Add this line to make the button bigger */
+        font-size: 1.2rem; /* Add this line to make the text bigger */
+    }
+
+.btn-link {
+    color: lavender;
+    font-size: 0.9rem;
+    text-decoration: none;
+}
+
+    .btn-link:hover {
+        text-decoration: underline;
+    }
+
+
+.price {
+    font-size: 1.5rem; /* Make the price bigger */
+    font: bold;
+}
+.btn-link {
+    color: #333; /* Change the text color to dark gray */
+    font-size: 1.2rem; /* Make the text bigger */
+    text-decoration: none;
+    padding: 0.5rem 1rem; /* Add padding to make the button bigger */
+    border-radius: 4px; /* Add rounded corners */
+    background-color: #ddd; /* Add a light gray background color */
+    margin-right: 0.5rem; /* Add some space between the buttons */
+}
+
+    .btn-link:hover {
+        background-color: #ccc; /* Change the background color on hover */
+        text-decoration: none; /* Remove the underline on hover */
+    }
+.bg-pink-light {
+    background-color: #CFCFCF; /* Màu hồng nhạt */
+}
+
+.bg-green-light {
+    background-color: #F5FFFA; /* Màu xanh nhạt */
+}
+.card-img-nh  {
+    aspect-ratio: 2 /  3 ; /* Thay đổi tỉ lệ theo ý muốn */
+}
+.card-text-nh  {
+    font-size: 1.5em; /* Làm cho chữ to hơn */
+    font-weight: bold; /* Làm cho chữ đậm hơn */
+}
+
+
+</style >
+

@@ -1,0 +1,70 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+
+@{
+    ViewData["Title"] = "Home Page";
+    int numOfQuantity = 1;
+}
+
+<link href="~/css/style.css" rel="stylesheet" />
+
+<div class="container">
+    <h1 class="text-center mb-4">Sản phẩm</h1>
+    <div class="search-manage-container">
+        <form asp-action="Index" method="get" class="search-form">
+            Tìm sản phẩm:
+            <input type="text" name="name" class="search-input" />
+            Loại sản phẩm:
+            <select name="categoryId" class="search-select">
+                <option value="">All Categories</option>
+                @foreach (var category in ViewBag.Categories)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+            Giá từ:
+            <input type="text" name="from" class="search-input" />
+            đến:
+            <input type="text" name="to" class="search-input" />
+            <button class="search-button">Tìm</button>
+        </form>
+    </div>
+    <br />
+    <div class="row">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-3">
+                <div class="card rounded bg-light text-black" style="width : 18rem;">
+                    <img src="@product.ImageUrl" alt="@product.Name" class="card-img-nh" >
+                    <div class="card-body">
+                        <h5 class="card-title card-text-nh">@product.Name</h5>
+                        <p class="card-text">Giá: <span class="product-price">@product.Price VND</span></p>
+                        <p class="card-text">Mô tả: @product.Description</p>
+                        <br />
+                        <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-productId="@product.Id" asp-route-quantity="@numOfQuantity">
+                            <button class="btn btn-outline-dark"><i class="bi-cart-fill me-1"></i>Thêm vào giỏ hàng</button>
+                        </a>
+                    </div> 
+                </div> 
+            </div>
+            
+        }
+    </div>
+</div>
+
+
+<!-- Thanh phân trang -->
+@Html.PagedListPager(
+        (IPagedList)Model,
+        page => Url.Action("Index", new { page, name = ViewBag.Name, categoryId = ViewBag.CategoryId, from = ViewBag.From, to = ViewBag.To }),
+            new PagedListRenderOptions
+        {
+            LinkToFirstPageFormat = "««",
+            LinkToPreviousPageFormat = "«",
+            LinkToNextPageFormat = "»",
+            LinkToLastPageFormat = "»»",
+            UlElementClasses = new[] { "pagination", "justify-content-center" },
+            LiElementClasses = new[] { "page-item" },
+            PageClasses = new[] { "page-link" }
+        })
